@@ -1,5 +1,5 @@
 import React from 'react';
-import { 
+import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
 
@@ -52,5 +52,5 @@ const styles = StyleSheet.create({
   memoBody: {
     paddingVertical: 32,
     paddingHorizontal: 27,
-  }
+  },
 });

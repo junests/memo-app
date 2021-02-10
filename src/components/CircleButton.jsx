@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { string, shape } from 'prop-types';
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 
 export default function CircleButton(props) {
   const { style, name } = props;
@@ -19,7 +19,7 @@ CircleButton.propTypes = {
 
 CircleButton.defaultProps = {
   style: null,
-}
+};
 
 const styles = StyleSheet.create({
   circleButton: {
