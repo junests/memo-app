@@ -8,10 +8,12 @@ import MemoList from '../components/MemoList';
 import CircleButton from '../components/CircleButton';
 import LogoutButton from '../components/LogoutButton';
 import Button from '../components/Button';
+import Loading from '../components/Loading';
 
 export default function MemoListScreen(props) {
   const { navigation } = props;
   const [memos, setMemos] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   
   useEffect(() => {
     navigation.setOptions({
@@ -24,6 +26,7 @@ export default function MemoListScreen(props) {
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
     if (currentUser) {
+      setLoading(true);
       const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'desc');
       unsubscribe = ref.onSnapshot(snapshot => {
         const userMemos = []
@@ -37,8 +40,10 @@ export default function MemoListScreen(props) {
           });
         });
         setMemos(userMemos)
+        setLoading(false);
       }, (error) => {
         console.log(error);
+        setLoading(false);
         Alert.alert('データの読み込みに失敗しました。')
       });
     }
@@ -48,6 +53,7 @@ export default function MemoListScreen(props) {
   if (memos.length === 0) {
     return (
       <View style={emptyStyles.container}>
+        <Loading isLoading={Loading} />
         <View style={emptyStyles.inner}>
           <Text style={emptyStyles.title}>最初のメモを作成してみよう！</Text>
           <Button
