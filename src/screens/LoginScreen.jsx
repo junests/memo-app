@@ -31,15 +31,13 @@ export default function LoginScreen(props) {
   function handlePress() {
     setLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(userCredential => {
-        const{ user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],
         });
       })
-      .catch(error => {
+      .catch((error) => {
         const errorMsg = translateErrors(error.code);
         Alert.alert(errorMsg.title, errorMsg.description);
       })
@@ -56,7 +54,7 @@ export default function LoginScreen(props) {
         <TextInput
           style={styles.input}
           value={email}
-          onChangeText={text => {
+          onChangeText={(text) => {
             setEmail(text);
           }}
           autoCapitalize="none"
@@ -67,7 +65,7 @@ export default function LoginScreen(props) {
         <TextInput
           style={styles.input}
           value={password}
-          onChangeText={text => {
+          onChangeText={(text) => {
             setPassword(text);
           }}
           autoCapitalize="none"

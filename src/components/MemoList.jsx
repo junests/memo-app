@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
-  shape, string, instanceOf, arrayOf
+  shape, string, instanceOf, arrayOf,
 } from 'prop-types';
 import firebase from 'firebase';
 
@@ -55,7 +55,7 @@ export default function MemoList(props) {
           <Feather name="x" size={16} color="#B0B0B0" />
         </TouchableOpacity>
       </TouchableOpacity>
-    )
+    );
   }
 
   return (
@@ -63,7 +63,7 @@ export default function MemoList(props) {
       <FlatList
         data={memos}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );

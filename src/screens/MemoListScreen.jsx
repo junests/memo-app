@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View, StyleSheet, Alert, Text
+  View, StyleSheet, Alert, Text,
 } from 'react-native';
 import firebase from 'firebase';
 
@@ -14,7 +14,7 @@ export default function MemoListScreen(props) {
   const { navigation } = props;
   const [memos, setMemos] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => <LogoutButton />,
@@ -28,10 +28,9 @@ export default function MemoListScreen(props) {
     if (currentUser) {
       setLoading(true);
       const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'desc');
-      unsubscribe = ref.onSnapshot(snapshot => {
-        const userMemos = []
-        snapshot.forEach(doc => {
-          console.log(doc.id, doc.data());
+      unsubscribe = ref.onSnapshot((snapshot) => {
+        const userMemos = [];
+        snapshot.forEach((doc) => {
           const data = doc.data();
           userMemos.push({
             id: doc.id,
@@ -39,12 +38,11 @@ export default function MemoListScreen(props) {
             updatedAt: data.updatedAt.toDate(),
           });
         });
-        setMemos(userMemos)
+        setMemos(userMemos);
         setLoading(false);
-      }, (error) => {
-        console.log(error);
+      }, () => {
         setLoading(false);
-        Alert.alert('データの読み込みに失敗しました。')
+        Alert.alert('データの読み込みに失敗しました。');
       });
     }
     return unsubscribe;

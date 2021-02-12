@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   View, StyleSheet, ActivityIndicator,
-} from 'react-native'
+} from 'react-native';
 import { bool } from 'prop-types';
 
 export default function Loading(props) {

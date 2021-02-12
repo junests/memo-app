@@ -13,11 +13,11 @@ export default function LogoutButton() {
       .then(() => {
         navigation.reset({
           index: 0,
-          routes: [{ name: 'Login'}],
+          routes: [{ name: 'Login' }],
         });
       })
       .catch(() => {
-        Alert.alert('ログアウトに失敗しました。')
+        Alert.alert('ログアウトに失敗しました。');
       });
   }
 

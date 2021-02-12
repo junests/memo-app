@@ -40,7 +40,7 @@ export default function MemoEditScreen(props) {
           value={body}
           multiline
           style={styles.input}
-          onChangeText={text => setBody(text) }
+          onChangeText={(text) => setBody(text)}
         />
       </View>
       <CircleButton
@@ -50,7 +50,6 @@ export default function MemoEditScreen(props) {
     </KeyboardSafeView>
   );
 }
-
 
 MemoEditScreen.propTypes = {
   route: shape({
