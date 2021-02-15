@@ -19,7 +19,8 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier":  "com.joit.memoapp"
+      "bundleIdentifier":  "com.joit.memoapp",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
